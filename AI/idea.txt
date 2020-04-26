@@ -1,0 +1,15 @@
+What will make this AI intelligent ?
+
+	A mix between randomness and natural selection
+
+	Agents will be created both randomly (random code mutation) and through offsprings
+
+	They will evolve in a environment that incentivize them to do something intelligible, 
+	the final goal is that they learn a concept so that they are able to answer case that they never seen before
+
+What is an agent ?
+	
+	The agents will be defined by an DNA (maybe be we could call this an Artificial. D. N., we'll see later) will be a string of code executed by either an emulator I have to make, 
+	or something else, I would be happy if I could use self generated code like used in some malwares
+
+	each agent will probably have to run on its own process, because they will crash most of the time
