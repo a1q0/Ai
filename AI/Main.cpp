@@ -26,8 +26,10 @@ int main(int argc, char *argv[]) {
 	*/
 	
 	ArtificialSelection as;
-
-
+	int* target = new int[1];
+	Source* sourceTarget = new Source(1);
+	sourceTarget->data = target;
+	as.setTarget(sourceTarget);
 
 
 	return 0;

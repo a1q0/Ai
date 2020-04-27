@@ -8,14 +8,16 @@ public:
 	Source* target;
 	Source* source;
 
-	AgentPool agentPool;
+	AgentPool* agentPool;
 
 	ArtificialSelection();
 	~ArtificialSelection();
 
-	void setTarget(Source& target);
+	void setTarget(Source* target);
 
-	void train();
+	void run();
+
+	void setAgentPool(AgentPool * agentPool);
 
 };
 
