@@ -153,12 +153,15 @@
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="AgentGenPool.h" />
+    <ClInclude Include="Emulator.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Source.h" />
+    <ClInclude Include="Subleq.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="AgentGenPool.cpp" />
+    <ClCompile Include="Emulator.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

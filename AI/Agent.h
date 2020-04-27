@@ -1,5 +1,8 @@
 #pragma once
+#include <thread>
+
 #include "Source.h"
+#include "Emulator.h"
 
 ///-------------------------------------------------------------------------------------------------
 /// Class:	Agent
@@ -20,8 +23,7 @@ public:
 	/// Summary:	The agent output.
 	Source output;
 
-	/// Summary:	The program length (source + input + output).
-	int length;
+	Emulator* emulator;
 
 	///-------------------------------------------------------------------------------------------------
 	/// Function:	Agent::Agent
@@ -38,7 +40,7 @@ public:
 	/// output -   	The output. 
 	///-------------------------------------------------------------------------------------------------
 
-	Agent(Source source, Source input, Source output);
+	Agent(Source source, Source input, Source output, Emulator* emulator);
 
 	///-------------------------------------------------------------------------------------------------
 	/// Function:	Agent::~Agent
