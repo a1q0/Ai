@@ -1,14 +1,35 @@
 #include "pch.h"
 #include "Agent.h"
 #include "Source.h"
+#include "Subleq.h"
 #include <iostream>
+#include <thread>
 
-Agent::Agent(Source source) {
+Agent::Agent(Source source, Source input, Source output) {
 	this->source = source;
 }
 
 Agent::~Agent() {
 	source.~Source();
+}
+
+void Agent::start() {
+	this->length = input.length + source.length + output.length;
+	int* memory = new int[this->length];
+
+	memcpy(&memory[0], input.data, input.length);
+	memcpy(&memory[input.length], source.data, source.length);
+	memcpy(&memory[input.length+source.length], output.data, output.length);
+
+	
+
+	memcpy(output.data, &memory[input.length + source.length], output.length);
+
+	delete memory;
+}
+
+std::thread Agent::run() {
+	return std::thread(this->start);
 }
 
 float Agent::fitness(Source &target) {
