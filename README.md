@@ -8,6 +8,7 @@
 ## Download Releases
   No releases yet.
   
+### Documentation: https://a1q0.github.io/Ai/
   
 refs:
 - https://en.wikipedia.org/wiki/Genetic_algorithm
