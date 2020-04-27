@@ -7,11 +7,8 @@
 ///-------------------------------------------------------------------------------------------------
 /// Class:	Agent
 ///
-/// Summary:	The Agent class
+/// The Agent class
 ///
-/// Author:	Aiko
-///
-/// Date:	27/04/2020
 ///-------------------------------------------------------------------------------------------------
 
 class Agent {
@@ -28,11 +25,8 @@ public:
 	///-------------------------------------------------------------------------------------------------
 	/// Function:	Agent::Agent
 	///
-	/// Summary:	Create an Agent with the provided Source.
+	/// Create an Agent with the provided Source.
 	///
-	/// Author:	Aiko.
-	///
-	/// Date:	27/04/2020.
 	///
 	/// Parameters:
 	/// source -   	Source that will be used by the agent. 
@@ -47,9 +41,6 @@ public:
 	///
 	/// Summary:	Destructor.
 	///
-	/// Author:	Aiko
-	///
-	/// Date:	27/04/2020
 	///-------------------------------------------------------------------------------------------------
 
 	~Agent();
@@ -57,11 +48,7 @@ public:
 	///-------------------------------------------------------------------------------------------------
 	/// Function:	run
 	///
-	/// Summary:	Run the agent source code.
-	///
-	/// Author:	Aiko
-	///
-	/// Date:	27/04/2020
+	/// Run the agent source code.
 	///
 	/// Returns:	A std::thread.
 	///-------------------------------------------------------------------------------------------------
@@ -71,11 +58,7 @@ public:
 	///-------------------------------------------------------------------------------------------------
 	/// Function:	fitness
 	///
-	/// Summary:	Calculate the fitness score of the Agent.
-	///
-	/// Author:	Aiko.
-	///
-	/// Date:	27/04/2020.
+	/// Calculate the fitness score of the Agent.
 	///
 	/// Parameters:
 	/// target - 	[in,out] Target used for the calculation. 
