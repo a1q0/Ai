@@ -2,6 +2,7 @@
 
 #include "Agent.h"
 #include "Source.h"
+#include "ArtificialSelection.h"
 
 int main(int argc, char *argv[]) {
 	/**
@@ -24,6 +25,7 @@ int main(int argc, char *argv[]) {
 
 	*/
 	
+	ArtificialSelection as;
 
 
 

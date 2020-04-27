@@ -1,19 +1,21 @@
 #pragma once
 
 #include "Source.h"
+#include "AgentPool.h"
 
 class ArtificialSelection {
 public:
-	Source target;
-	Source source;
+	Source* target;
+	Source* source;
 
-	int agents_count;
+	AgentPool agentPool;
 
 	ArtificialSelection();
 	~ArtificialSelection();
 
+	void setTarget(Source& target);
+
 	void train();
 
-	
 };
 

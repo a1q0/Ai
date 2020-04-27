@@ -14,13 +14,13 @@
 class Agent {
 public:
 	/// Summary:	The agent source.
-	Source source;
+	Source& source;
 	/// Summary:	The agent input.
-	Source input;
+	Source& input;
 	/// Summary:	The agent output.
-	Source output;
+	Source& output;
 
-	Emulator* emulator;
+	Emulator& emulator;
 
 	///-------------------------------------------------------------------------------------------------
 	/// Function:	Agent::Agent
@@ -34,7 +34,7 @@ public:
 	/// output -   	The output. 
 	///-------------------------------------------------------------------------------------------------
 
-	Agent(Source source, Source input, Source output, Emulator* emulator);
+	Agent(Source& source, Source& input, Source& output, Emulator& emulator);
 
 	///-------------------------------------------------------------------------------------------------
 	/// Function:	Agent::~Agent
