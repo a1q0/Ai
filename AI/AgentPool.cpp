@@ -7,6 +7,8 @@ AgentPool::AgentPool() {
 
 
 AgentPool::~AgentPool() {
+	for (int i = 0; i < agents_len; i++)
+		agents[i].~Agent();
 }
 
 void AgentPool::run() {

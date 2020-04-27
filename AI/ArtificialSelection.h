@@ -11,13 +11,14 @@ public:
 	AgentPool* agentPool;
 
 	ArtificialSelection();
+	ArtificialSelection(Source* target, AgentPool* agentPool);
 	~ArtificialSelection();
 
-	void setTarget(Source* target);
 
 	void run();
 
-	void setAgentPool(AgentPool * agentPool);
+	void setTarget(Source* target);
+	void setAgentPool(AgentPool* agentPool);
 
 };
 
