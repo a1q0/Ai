@@ -6,7 +6,11 @@ public:
 	/// Summary:	Length of data array
 	int length;
 
-	Source();
+	Source(int length);
 	~Source();
+
+	Source& random();
+	Source& random(unsigned int seed);
+	Source& crossover(Source& src, Source& dst, int start, int length);
 };
 
