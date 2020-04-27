@@ -46,6 +46,7 @@ Source& Source::crossover(Source& src, Source& dst, int start, int length) {
 
 	if (start == src.length)
 		Logger::debug("Source", "crossover() crossover start at end of source.");
+	
 	if (length == 0)
 		Logger::debug("Source", "crossover() crossover length is zero.");
 
