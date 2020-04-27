@@ -17,7 +17,7 @@ void AgentPool::run() {
 	}
 }
 
-void AgentPool::setSources(Source& source) {
+void AgentPool::setSources(Source* source) {
 	for (int i = 0; i < this->agents_len; i++) {
 		agents[i].source = source;
 	}

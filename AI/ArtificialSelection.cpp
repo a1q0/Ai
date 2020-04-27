@@ -8,22 +8,29 @@
 
 
 ArtificialSelection::ArtificialSelection() {
-	Logger::info("Artificial Selection", " Initializing ... ");
-	
+	ArtificialSelection();
 }
 
-ArtificialSelection::ArtificialSelection(Source * target, AgentPool * agentPool) {
-	this->target = target;
-	this->agentPool = agentPool;
-
-	ArtificialSelection();
+ArtificialSelection::ArtificialSelection(Source* target, AgentPool* agentPool) {
+	Logger::info("Artificial Selection", " Initializing ... ");
+	
+	setTarget(target);
+	setAgentPool(agentPool);
 }
 
 ArtificialSelection::~ArtificialSelection() {
 }
 
 void ArtificialSelection::run() {
-	if (agentPool == nullptr) {}
+	if (agentPool == nullptr) {
+		Logger::error("ArtificialSelection", "Agent Poll was not created.");
+		exit(-1);
+	}
+
+	if (target == nullptr) {
+		Logger::error("ArtificialSelection", "Target output was not specified.");
+		exit(-1);
+	}
 }
 
 void ArtificialSelection::setAgentPool(AgentPool* agentPool) {

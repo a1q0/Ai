@@ -42,13 +42,13 @@ std::thread Agent::run() {
 float Agent::fitness(Source &target) {
 	float fitness = 0;
 
-	if (target.length != output.length) {
+	if (target.length != output->length) {
 		Logger::error("Agent.cpp -> fitness()", " Target length != Output length");
 		exit(-1);
 	}
 
-	for (int i = 0; i < output.length; i++)
-		fitness += target.data[i] == output.data[i] / output.length;
+	for (int i = 0; i < output->length; i++)
+		fitness += target.data[i] == output->data[i] / output->length;
 	
 	return fitness;
 }
