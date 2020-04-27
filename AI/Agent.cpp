@@ -1,8 +1,10 @@
 #include "pch.h"
-#include "Agent.h"
-#include "Source.h"
 #include <iostream>
 #include <thread>
+
+#include "Agent.h"
+#include "Source.h"
+#include "Logger.h"
 
 Agent::Agent(Source source, Source input, Source output, Emulator* emulator) {
 	this->source = source;
@@ -38,7 +40,7 @@ float Agent::fitness(Source &target) {
 	float fitness = 0;
 
 	if (target.length != output.length) {
-		std::cout << "Agent.cpp -> fitness: Target length != Output length";
+		Logger::error("Agent.cpp -> fitness()", " Target length != Output length");
 		exit(-1);
 	}
 
