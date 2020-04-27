@@ -2,15 +2,7 @@
 #include "Logger.h"
 #include <iostream>
 
-Logger::Logger() {
-}
-
-
-Logger::~Logger() {
-}
-
-
-void Logger::info(std::string message) {
+void Logger::info(std::string name, std::string message) {
 	if (!enable_info)
 		return;
 	if (name != "")
@@ -18,7 +10,7 @@ void Logger::info(std::string message) {
 	std::cout << message << std::endl;
 }
 
-void Logger::debug(std::string message) {
+void Logger::debug(std::string name, std::string message) {
 	if (!enable_debug)
 		return;
 	std::cout << "[Debug]";
@@ -28,7 +20,7 @@ void Logger::debug(std::string message) {
 
 }
 
-void Logger::warning(std::string message) {
+void Logger::warning(std::string name, std::string message) {
 	if (!enable_warning)
 		return;
 	std::cout << "[Warning]";
@@ -38,7 +30,7 @@ void Logger::warning(std::string message) {
 
 }
 
-void Logger::error(std::string message) {
+void Logger::error(std::string name, std::string message) {
 	if (!enable_error)
 		return;
 	std::cout << "[Error]";
