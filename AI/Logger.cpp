@@ -1,6 +1,10 @@
 #include "pch.h"
+
+#include <string>
+#include <iostream> 
+#include <sstream>   
+
 #include "Logger.h"
-#include <iostream>
 
 namespace Logger {
 	bool enable_info = true;
@@ -43,5 +47,30 @@ namespace Logger {
 		if (name != "")
 			std::cout << "[" << name << "] ";
 		std::cout << message << std::endl;
+	}
+
+	void info(std::string name, std::stringstream message) {
+		if (!enable_info)
+			return;
+		info(name, message.str());
+	}
+
+	void debug(std::string name, std::stringstream message) {
+		if (!enable_debug)
+			return;
+		debug(name, message.str());
+
+	}
+
+	void warning(std::string name, std::stringstream message) {
+		if (!enable_warning)
+			return;
+		warning(name, message.str());
+	}
+
+	void error(std::string name, std::stringstream message) {
+		if (!enable_error)
+			return;
+		error(name, message.str());
 	}
 };

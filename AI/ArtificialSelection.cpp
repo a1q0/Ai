@@ -8,7 +8,7 @@
 
 
 ArtificialSelection::ArtificialSelection() {
-	ArtificialSelection();
+	ArtificialSelection(nullptr, nullptr);
 }
 
 ArtificialSelection::ArtificialSelection(Source* target, AgentPool* agentPool) {
