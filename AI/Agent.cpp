@@ -106,5 +106,5 @@ Agent* Agent::copy() {
 	agent->memory_length = this->memory_length;
 	memcpy(agent->memory, this->memory, memory_length);
 	agent->compiled = this->compiled;
-	return this;
+	return agent;
 }

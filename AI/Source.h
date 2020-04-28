@@ -2,11 +2,11 @@
 class Source {
 public:
 	int* data;
-	int length;
+	unsigned int length;
 
 	Source();
-	Source(int length);
-	Source(int* data, int length);
+	Source(unsigned int length);
+	Source(int* data, unsigned int length);
 	~Source();
 
 	Source* random();

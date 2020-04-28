@@ -11,29 +11,31 @@
 Source::Source() : Source(0) {
 }
 
-Source::Source(int length) {
+Source::Source(unsigned int length) {
 	this->length = length;
 	
+	std::cout << "length: " << length << std::endl;
+
 	if (length != 0)
 		this->data = new int[length];
 	else
 		this->data = nullptr;
 }
 
-Source::Source(int* data, int length) {
+Source::Source(int* data, unsigned int length) {
+	std::cout << "length: " << length << std::endl;
+
 	this->data = new int[length];
 	this->length = length;
 	memcpy(this->data, data, length);
 }
 
 Source::~Source() {
-	delete data;
+	delete[] data;
 }
 
 Source* Source::random() {
-	std::cout << this->length << std::endl;
-
-	for (int i = 0; i < this->length; i++)
+	for (unsigned int i = 0; i < this->length; i++)
 		this->data[i] = rand() % (int) pow(2, sizeof(data[0]) * 8);
 	
 	return this;
@@ -42,14 +44,14 @@ Source* Source::random() {
 Source* Source::random(unsigned int seed) {
 	srand(seed);
 
-	for (int i = 0; i < this->length; i++)
+	for (unsigned int i = 0; i < this->length; i++)
 		this->data[i] = rand() % (int)pow(2, sizeof(data[0]) * 8);
 
 	return this;
 }
 
 Source* Source::zero() {
-	for (int i = 0; i < this->length; i++)
+	for (unsigned int i = 0; i < this->length; i++)
 		this->data[i] = 0;
 
 	return this;
@@ -79,6 +81,7 @@ Source* Source::crossover(Source& src, int start, int length) {
 }
 
 Source* Source::copy() {
+	std::cout << this->length << std::endl;
 	return new Source(this->data, this->length);
 }
 
