@@ -27,7 +27,11 @@ int main(int argc, char *argv[]) {
 	
 	Source* target = new Source(1);
 	target->data = new int[2] {1, 2};
-	ArtificialSelection as(target, new AgentPool());
+	ArtificialSelection as;
+
+	as.setTarget(target);
+	as.setAgentPool(new AgentPool(256).random());
+
 	as.run();
 	
 

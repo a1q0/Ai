@@ -9,9 +9,15 @@
 
 Source::Source(int length) {
 	this->length = length;
-	this->data = new int[length];
+	
+	if (length != 0)
+		this->data = new int[length];
+	else
+		this->data = nullptr;
 }
 
+Source::Source() : Source(0) {
+}
 
 Source::~Source() {
 	delete data;
@@ -33,8 +39,8 @@ Source& Source::random(unsigned int seed) {
 	return *this;
 }
 
-Source& Source::crossover(Source& src, Source& dst, int start, int length) {
-	if (src.length != dst.length) {
+Source& Source::crossover(Source& src, int start, int length) {
+	if (src.length != this->length) {
 		Logger::error("Source", "crossover() source and destination length are not equal.");
 		exit(-1);
 	}
@@ -51,7 +57,7 @@ Source& Source::crossover(Source& src, Source& dst, int start, int length) {
 		Logger::debug("Source", "crossover() crossover length is zero.");
 
 	for (int i = start; i < this->length; i++)
-		dst.data[i] = src.data[i];
+		this->data[i] = src.data[i];
 	
 	return *this;
 }

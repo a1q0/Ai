@@ -47,6 +47,8 @@ void Agent::init_memory(int length) {
 void Agent::fill_memory(Source** sources, int length) {
 	int pos = 0;
 	for (int i = 0; i < length; i++) {
+		if (sources[i]->length == 0)
+			continue;
 		memcpy(&memory[pos], sources[i]->data, sources[i]->length);
 		pos += sources[i]->length;
 	}

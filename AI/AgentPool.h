@@ -13,6 +13,8 @@ public:
 	AgentPool(Agent* agents, int agents_len);
 	~AgentPool();
 
+	void random();
+
 	void run();
 
 	bool compile();

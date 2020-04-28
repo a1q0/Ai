@@ -4,6 +4,7 @@ public:
 	int* data;
 	int length;
 
+	Source();
 	Source(int length);
 	~Source();
 
@@ -18,6 +19,6 @@ public:
 	/// <param name="seed">The seed used to randomize the source.</param>
 	/// <returns></returns>
 	Source& random(unsigned int seed);
-	Source& crossover(Source& src, Source& dst, int start, int length);
+	Source& crossover(Source& src, int start, int length);
 };
 
