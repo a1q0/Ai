@@ -12,8 +12,8 @@ public:
 
 	Emulator* emulator;
 
-	int* memory;
-	int memory_length;
+	unsigned int* memory;
+	unsigned int memory_length;
 	bool compiled = false;
 
 	Agent();
@@ -36,8 +36,8 @@ public:
 
 private:
 	void start();
-	void init_memory(int length);
+	void init_memory(unsigned int length);
 
-	void fill_memory(Source** sources, int length);
+	void fill_memory(Source** sources, unsigned int length);
 
 };

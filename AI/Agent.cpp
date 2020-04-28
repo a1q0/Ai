@@ -37,15 +37,15 @@ void Agent::start() {
 	memcpy(output->data, &memory[input->length + code->length], output->length);
 }
 
-void Agent::init_memory(int length) {
+void Agent::init_memory(unsigned int length) {
 	if (this->memory != nullptr)
 		delete[] memory;
-	this->memory = new int[length];
+	this->memory = new unsigned int[length];
 }
 
-void Agent::fill_memory(Source** sources, int length) {
+void Agent::fill_memory(Source** sources, unsigned int length) {
 	int pos = 0;
-	for (int i = 0; i < length; i++) {
+	for (unsigned int i = 0; i < length; i++) {
 		if (sources[i]->length == 0)
 			continue;
 		memcpy(&memory[pos], sources[i]->data, sources[i]->length);
@@ -102,7 +102,7 @@ Agent* Agent::setOutput(Source* source) {
 
 Agent* Agent::copy() {
 	Agent* agent = new Agent(code->copy(), input->copy(), output->copy(), emulator);
-	agent->memory = new int[memory_length];
+	agent->memory = new unsigned int[memory_length];
 	agent->memory_length = this->memory_length;
 	memcpy(agent->memory, this->memory, memory_length);
 	agent->compiled = this->compiled;

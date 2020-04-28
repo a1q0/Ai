@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-AgentPool::AgentPool(Agent agentTemplate, int agents_len) : target(nullptr) {
+AgentPool::AgentPool(Agent agentTemplate, unsigned int agents_len) : target(nullptr) {
 	this->agents = new Agent[agents_len];
 	this->agents_len = agents_len;
 
@@ -14,12 +14,12 @@ AgentPool::AgentPool(Agent agentTemplate, int agents_len) : target(nullptr) {
 	}
 }
 
-AgentPool::AgentPool(Agent* agents, int agents_len) : target(nullptr) {
+AgentPool::AgentPool(Agent* agents, unsigned int agents_len) : target(nullptr) {
 	this->agents = agents;
 	this->agents_len = agents_len;
 }
 
-AgentPool::AgentPool(Agent* agents, int agents_len, Source* target) {
+AgentPool::AgentPool(Agent* agents, unsigned int agents_len, Source* target) {
 	this->agents = agents;
 	this->agents_len = agents_len;
 	this->target = target;
@@ -32,6 +32,9 @@ AgentPool::~AgentPool() {
 
 AgentPool* AgentPool::setRandomSources() {
 	for (unsigned int i = 0; i < this->agents_len; i++) {
+		if (agents[i].code == nullptr)
+			exit(-1);
+		
 		agents[i].code->random();
 	}
 	return this;

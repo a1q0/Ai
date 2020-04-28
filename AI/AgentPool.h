@@ -5,13 +5,13 @@
 class AgentPool {
 public:
 	Agent* agents;
-	int agents_len;
+	unsigned int agents_len;
 
 	Source* target;
 	
-	AgentPool(Agent agentTemplate, int agents_len);
-	AgentPool(Agent* agents, int agents_len);
-	AgentPool(Agent* agents, int agents_len, Source* target);
+	AgentPool(Agent agentTemplate, unsigned int agents_len);
+	AgentPool(Agent* agents, unsigned int agents_len);
+	AgentPool(Agent* agents, unsigned int agents_len, Source* target);
 	~AgentPool();
 
 	AgentPool* setRandomSources();

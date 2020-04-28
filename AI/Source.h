@@ -1,7 +1,7 @@
 #pragma once
 class Source {
 public:
-	int* data;
+	int* data = 0;
 	unsigned int length;
 
 	Source(unsigned int length);

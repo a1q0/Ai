@@ -22,13 +22,16 @@ Source::Source(unsigned int length) {
 Source::Source(int* data, unsigned int length) {
 	std::cout << "length: " << length << std::endl;
 
+
 	this->data = new int[length];
 	this->length = length;
 	memcpy(this->data, data, length);
 }
 
 Source::~Source() {
-	delete[] data;
+	if (!nullptr)
+		delete[] data;
+	data = nullptr;
 }
 
 Source* Source::random() {
