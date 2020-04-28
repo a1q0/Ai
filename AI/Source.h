@@ -1,9 +1,10 @@
 #pragma once
 class Source {
 public:
-	/// Summary:	Pointer to int array where instructions are stored
+	/// <summary>
+	/// The data
+	/// </summary>
 	int* data;
-	/// Summary:	Length of data array
 	int length;
 
 	Source(int length);

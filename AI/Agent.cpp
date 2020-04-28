@@ -32,7 +32,7 @@ void Agent::start() {
 
 	memcpy(output->data, &memory[input->length + source->length], output->length);
 
-	delete memory;
+	delete[length] memory;
 }
 
 std::thread Agent::run() {
