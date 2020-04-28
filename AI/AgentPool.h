@@ -13,7 +13,7 @@ public:
 	AgentPool(Agent* agents, int agents_len);
 	~AgentPool();
 
-	void random();
+	AgentPool* setRandomSources();
 
 	void run();
 

@@ -26,14 +26,11 @@ Agent::~Agent() {
 }
 
 void Agent::start() {
-	int length = input->length + source->length + output->length;
-	
+	if (compiled == false)
+		Logger::error("Agent", "You must compile the agent before running it.");
+		exit(-1);
 
-	memcpy(&memory[0], input->data, input->length);
-	memcpy(&memory[input->length], source->data, source->length);
-	memcpy(&memory[input->length+source->length], output->data, output->length);
-
-	emulator->run(memory, length);
+	emulator->run(memory, memory_length);
 
 	memcpy(output->data, &memory[input->length + source->length], output->length);
 }

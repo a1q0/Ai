@@ -30,7 +30,8 @@ int main(int argc, char *argv[]) {
 	ArtificialSelection as;
 
 	as.setTarget(target);
-	as.setAgentPool(new AgentPool(256).random());
+	
+	as.setAgentPool(new AgentPool(256)->setRandomSources());
 
 	as.run();
 	

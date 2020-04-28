@@ -20,10 +20,11 @@ AgentPool::~AgentPool() {
 		agents[i].~Agent();
 }
 
-void AgentPool::random() {
+AgentPool* AgentPool::setRandomSources() {
 	for (int i = 0; i < this->agents_len; i++) {
 		agents[i].source->random();
 	}
+	return this;
 }
 
 void AgentPool::run() {

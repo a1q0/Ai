@@ -14,6 +14,7 @@ public:
 
 	int* memory;
 	int memory_length;
+	bool compiled = false;
 
 	Agent();
 	Agent(Source* source, Source* input, Source* output, Emulator* emulator);
