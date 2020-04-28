@@ -31,11 +31,11 @@ int main(int argc, char *argv[]) {
 
 	as.setTarget(target);
 	
-	Agent agent;
+	Agent* agent = new Agent();
 
-	agent.setInput(new Source(0));
-	agent.setCode((new Source(256))->zero());
-	agent.setOutput((new Source(2))->zero());
+	agent->setInput(new Source(0));
+	agent->setCode((new Source(256))->zero());
+	agent->setOutput((new Source(2))->zero());
 
 	as.setAgentPool((new AgentPool(agent, 256))->setRandomSources());
 

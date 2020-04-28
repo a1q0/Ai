@@ -73,7 +73,7 @@ float Agent::fitness(Source &target) {
 		exit(-1);
 	}
 
-	for (int i = 0; i < output->length; i++)
+	for (unsigned int i = 0; i < output->length; i++)
 		fitness += target.data[i] == output->data[i] / output->length;
 	
 	return fitness;

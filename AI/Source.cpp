@@ -8,9 +8,6 @@
 
 #include <iostream>
 
-Source::Source() : Source(0) {
-}
-
 Source::Source(unsigned int length) {
 	this->length = length;
 	
@@ -57,7 +54,7 @@ Source* Source::zero() {
 	return this;
 }
 
-Source* Source::crossover(Source& src, int start, int length) {
+Source* Source::crossover(Source& src, int start, unsigned int length) {
 	if (src.length != this->length) {
 		Logger::error("Source", "crossover() source and destination length are not equal.");
 		exit(-1);
@@ -74,7 +71,7 @@ Source* Source::crossover(Source& src, int start, int length) {
 	if (length == 0)
 		Logger::debug("Source", "crossover() crossover length is zero.");
 
-	for (int i = start; i < this->length; i++)
+	for (unsigned int i = start; i < this->length; i++)
 		this->data[i] = src.data[i];
 	
 	return this;

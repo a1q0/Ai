@@ -31,7 +31,7 @@ AgentPool::~AgentPool() {
 }
 
 AgentPool* AgentPool::setRandomSources() {
-	for (int i = 0; i < this->agents_len; i++) {
+	for (unsigned int i = 0; i < this->agents_len; i++) {
 		agents[i].code->random();
 	}
 	return this;
