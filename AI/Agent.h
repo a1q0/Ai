@@ -12,6 +12,9 @@ public:
 
 	Emulator* emulator;
 
+	int* memory;
+	int memory_length;
+
 	Agent();
 	Agent(Source* source, Source* input, Source* output, Emulator* emulator);
 
@@ -24,4 +27,8 @@ public:
 
 private:
 	void start();
+	void init_memory(int length);
+
+	void fill_memory(Source** sources, int length);
+
 };

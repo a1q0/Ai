@@ -22,11 +22,12 @@ Agent::~Agent() {
 	delete input;
 	delete output;
 	delete emulator;
+	delete[] memory;
 }
 
 void Agent::start() {
 	int length = input->length + source->length + output->length;
-	int* memory = new int[length];
+	
 
 	memcpy(&memory[0], input->data, input->length);
 	memcpy(&memory[input->length], source->data, source->length);
@@ -35,12 +36,27 @@ void Agent::start() {
 	emulator->run(memory, length);
 
 	memcpy(output->data, &memory[input->length + source->length], output->length);
+}
 
-	delete[length] memory;
+void Agent::init_memory(int length) {
+	if (this->memory != nullptr)
+		delete[] memory;
+	this->memory = new int[length];
+}
+
+void Agent::fill_memory(Source** sources, int length) {
+	int pos = 0;
+	for (int i = 0; i < length; i++) {
+		memcpy(&memory[pos], sources[i]->data, sources[i]->length);
+		pos += sources[i]->length;
+	}
 }
 
 bool Agent::compile() {
-	
+	this->memory_length = this->input->length + this->source->length + this->output->length;
+	Source* sources[3] = { input, source, output };
+	init_memory(memory_length);
+	fill_memory(sources, 3);
 }
 
 std::thread Agent::run() {
