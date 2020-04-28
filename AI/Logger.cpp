@@ -45,7 +45,7 @@ namespace Logger {
 			return;
 		std::cout << "[Error]";
 		if (name != "")
-			std::cout << "[" << name << "] ";
+			std::cout << "-> " << name << " : ";
 		std::cout << message << std::endl;
 	}
 

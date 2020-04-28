@@ -25,12 +25,11 @@ int main(int argc, char *argv[]) {
 
 	*/
 	
-	int* target = new int[1];
-	Source* sourceTarget = new Source(1);
-	sourceTarget->data = target;
-	ArtificialSelection as(sourceTarget, new AgentPool());
-	as.setTarget(sourceTarget);
-
+	Source* target = new Source(1);
+	target->data = new int[2] {1, 2};
+	ArtificialSelection as(target, new AgentPool());
+	as.run();
+	
 
 	return 0;
 }

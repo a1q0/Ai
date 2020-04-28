@@ -7,28 +7,19 @@ public:
 	Agent* agents;
 	int agents_len;
 	
-	AgentPool();
-	~AgentPool();
 
+	AgentPool();
+	AgentPool(int agents_len);
+	AgentPool(Agent* agents, int agents_len);
+	~AgentPool();
 
 	void run();
 
-	void setSources(Source* sources);
+	bool compile();
 
-	void setOutputs(Source* outputs);
-
-	void setInputs(Source* inputs);
-
-	void setSources(Source& source);
-
-	void setOutputs(Source& output);
-
-	void setInputs(Source& input);
-
-	Source* getSources();
-
-	Source* getOutputs();
-
-	Source* getInputs();
+	void setTarget(Source* target);
+	void setSource(Source* source);
+	void setInput(Source* input);
+	void setOutput(Source* output);
 };
 

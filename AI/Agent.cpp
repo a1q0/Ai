@@ -6,6 +6,10 @@
 #include "Source.h"
 #include "Logger.h"
 
+Agent::Agent() : Agent(nullptr, nullptr, nullptr, nullptr) {
+
+}
+
 Agent::Agent(Source* source, Source* input, Source* output, Emulator* emulator) {
 	this->source = source;
 	this->input = input;
@@ -33,6 +37,10 @@ void Agent::start() {
 	memcpy(output->data, &memory[input->length + source->length], output->length);
 
 	delete[length] memory;
+}
+
+bool Agent::compile() {
+	
 }
 
 std::thread Agent::run() {

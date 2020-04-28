@@ -5,13 +5,11 @@
 #include "ArtificialSelection.h"
 #include "Logger.h"
 
-
-
-ArtificialSelection::ArtificialSelection() {
-	ArtificialSelection(nullptr, nullptr);
+ArtificialSelection::ArtificialSelection() : ArtificialSelection(nullptr, nullptr) {
+	
 }
 
-ArtificialSelection::ArtificialSelection(Source* target, AgentPool* agentPool) {
+ArtificialSelection::ArtificialSelection(Source* target, AgentPool* agentPool) : source(nullptr) {
 	Logger::info("Artificial Selection", " Initializing ... ");
 	
 	setTarget(target);
@@ -31,6 +29,8 @@ void ArtificialSelection::run() {
 		Logger::error("ArtificialSelection", "Target output was not specified.");
 		exit(-1);
 	}
+
+	agentPool->run();
 }
 
 void ArtificialSelection::setAgentPool(AgentPool* agentPool) {
@@ -39,6 +39,10 @@ void ArtificialSelection::setAgentPool(AgentPool* agentPool) {
 
 void ArtificialSelection::setTarget(Source* target) {
 	this->target = target;
+
+	if (agentPool != nullptr) {
+		agentPool->setTarget(target);
+	}
 }
 
 
