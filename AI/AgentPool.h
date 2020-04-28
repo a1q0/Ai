@@ -6,11 +6,12 @@ class AgentPool {
 public:
 	Agent* agents;
 	int agents_len;
-	
 
-	AgentPool();
-	AgentPool(int agents_len);
+	Source* target;
+	
+	AgentPool(Agent agentTemplate, int agents_len);
 	AgentPool(Agent* agents, int agents_len);
+	AgentPool(Agent* agents, int agents_len, Source* target);
 	~AgentPool();
 
 	AgentPool* setRandomSources();
@@ -19,6 +20,7 @@ public:
 
 	bool compile();
 
+	float getFittest(Agent& agent);
 	void setTarget(Source* target);
 	void setSource(Source* source);
 	void setInput(Source* input);

@@ -6,19 +6,21 @@
 #include "Source.h"
 #include "Logger.h"
 
-Agent::Agent() : Agent(nullptr, nullptr, nullptr, nullptr) {
-
+Agent::Agent() : memory(nullptr), memory_length(0), emulator(nullptr) {
+	this->input = new Source(0);
+	this->output = new Source(0);
+	this->code = new Source(0);
 }
 
-Agent::Agent(Source* source, Source* input, Source* output, Emulator* emulator) {
-	this->source = source;
+Agent::Agent(Source* code, Source* input, Source* output, Emulator* emulator) : memory(nullptr), memory_length(0) {
+	this->code = code;
 	this->input = input;
 	this->output = output;
 	this->emulator = emulator;
 }
 
 Agent::~Agent() {
-	delete source;
+	delete code;
 	delete input;
 	delete output;
 	delete emulator;
@@ -32,7 +34,7 @@ void Agent::start() {
 
 	emulator->run(memory, memory_length);
 
-	memcpy(output->data, &memory[input->length + source->length], output->length);
+	memcpy(output->data, &memory[input->length + code->length], output->length);
 }
 
 void Agent::init_memory(int length) {
@@ -52,10 +54,11 @@ void Agent::fill_memory(Source** sources, int length) {
 }
 
 bool Agent::compile() {
-	this->memory_length = this->input->length + this->source->length + this->output->length;
-	Source* sources[3] = { input, source, output };
+	this->memory_length = this->input->length + this->code->length + this->output->length;
+	Source* sources[3] = { input, code, output };
 	init_memory(memory_length);
 	fill_memory(sources, 3);
+	return true;
 }
 
 std::thread Agent::run() {
@@ -74,4 +77,34 @@ float Agent::fitness(Source &target) {
 		fitness += target.data[i] == output->data[i] / output->length;
 	
 	return fitness;
+}
+
+Agent* Agent::setInput(Source* source) {
+	if (input != nullptr)
+		delete input;
+	this->input = source;
+	return this;
+}
+
+Agent* Agent::setCode(Source* source) {
+	if (code != nullptr)
+		delete code;
+	this->code = source;
+	return this;
+}
+
+Agent* Agent::setOutput(Source* source) {
+	if (output != nullptr)
+		delete output;
+	this->output = source;
+	return this;
+}
+
+Agent* Agent::copy() {
+	Agent* agent = new Agent(code->copy(), input->copy(), output->copy(), emulator);
+	agent->memory = new int[memory_length];
+	agent->memory_length = this->memory_length;
+	memcpy(agent->memory, this->memory, memory_length);
+	agent->compiled = this->compiled;
+	return this;
 }

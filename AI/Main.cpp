@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 
 	as.setTarget(target);
 	
-	as.setAgentPool(new AgentPool(256)->setRandomSources());
+	as.setAgentPool((new AgentPool(*new Agent(), 256))->setRandomSources());
 
 	as.run();
 	

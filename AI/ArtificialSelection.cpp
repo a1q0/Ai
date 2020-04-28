@@ -9,7 +9,7 @@ ArtificialSelection::ArtificialSelection() : ArtificialSelection(nullptr, nullpt
 	
 }
 
-ArtificialSelection::ArtificialSelection(Source* target, AgentPool* agentPool) : source(nullptr) {
+ArtificialSelection::ArtificialSelection(Source* target, AgentPool* agentPool) {
 	Logger::info("Artificial Selection", " Initializing ... ");
 	
 	setTarget(target);

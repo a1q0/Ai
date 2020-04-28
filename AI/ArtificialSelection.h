@@ -6,8 +6,7 @@
 class ArtificialSelection {
 public:
 	Source* target;
-	Source* source;
-
+	
 	AgentPool* agentPool;
 
 	ArtificialSelection();

@@ -1,17 +1,24 @@
 #include "pch.h"
 #include "AgentPool.h"
 
-AgentPool::AgentPool(int agents_len) : AgentPool(new Agent[agents_len], agents_len) {
+AgentPool::AgentPool(Agent agentTemplate, int agents_len) : target(nullptr) {
+	this->agents = new Agent[agents_len];
+	this->agents_len = agents_len;
 
+	for (int i = 0; i < agents_len; i++) {
+		this->agents[i] = *agentTemplate.copy();
+	}
 }
 
-AgentPool::AgentPool() : AgentPool(nullptr, 0) {
-}
-
-
-AgentPool::AgentPool(Agent* agents, int agents_len) {
+AgentPool::AgentPool(Agent* agents, int agents_len) : target(nullptr) {
 	this->agents = agents;
 	this->agents_len = agents_len;
+}
+
+AgentPool::AgentPool(Agent* agents, int agents_len, Source* target) {
+	this->agents = agents;
+	this->agents_len = agents_len;
+	this->target = target;
 }
 
 
@@ -22,7 +29,7 @@ AgentPool::~AgentPool() {
 
 AgentPool* AgentPool::setRandomSources() {
 	for (int i = 0; i < this->agents_len; i++) {
-		agents[i].source->random();
+		agents[i].code->random();
 	}
 	return this;
 }
@@ -42,13 +49,22 @@ bool AgentPool::compile() {
 	return true;
 }
 
+float AgentPool::getFittest(Agent& agent)
+{
+	return 0.0f;
+}
+
 void AgentPool::setTarget(Source* target) {
-	this->setTarget = target;
+	this->target = target;
+
+	for (int i = 0; i < agents_len; i++) {
+		agents[i].setOutput((new Source(target->length))->random());
+	}
 }
 
 void AgentPool::setSource(Source* source) {
 	for (int i = 0; i < this->agents_len; i++) {
-		agents[i].source = source;
+		agents[i].code = source;
 	}
 }
 

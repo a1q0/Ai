@@ -6,7 +6,7 @@
 
 class Agent {
 public:
-	Source* source;
+	Source* code;
 	Source* input;
 	Source* output;
 
@@ -25,6 +25,14 @@ public:
 	std::thread run();
 
 	float fitness(Source &target);
+
+	Agent* setInput(Source* source);
+
+	Agent* setCode(Source* source);
+
+	Agent* setOutput(Source* source);
+
+	Agent* copy();
 
 private:
 	void start();
