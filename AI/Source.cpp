@@ -6,13 +6,9 @@
 #include "Source.h"
 #include "Logger.h"
 
-#include <iostream>
-
 Source::Source(unsigned int length) {
 	this->length = length;
 	
-	std::cout << "constructor 1 length: " << length << std::endl;
-
 	if (length != 0)
 		this->data = new int[length];
 	else
@@ -20,9 +16,6 @@ Source::Source(unsigned int length) {
 }
 
 Source::Source(int* data, unsigned int length) {
-	std::cout << "constructor 2 length: " << length << std::endl;
-
-
 	this->data = new int[length];
 	this->length = length;
 	memcpy(this->data, data, length);

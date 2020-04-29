@@ -25,11 +25,11 @@ int main(int argc, char *argv[]) {
 
 	*/
 	
-	ArtificialSelection as;
+	ArtificialSelection* as = new ArtificialSelection();
 
 	Source* target = new Source(1);
 	target->data = new int[2] {1, 2};
-	as.setTarget(target);
+	as->setTarget(target);
 	
 	// Agent used as template for all others agents
 	Agent* agent = new Agent();
@@ -39,13 +39,15 @@ int main(int argc, char *argv[]) {
 	agent->setOutput((new Source(2))->zero());
 
 	AgentPool* ap = new AgentPool(agent, 256);
+	as->setAgentPool(ap);
+	
+	as->run();
 
+	delete as;
 	delete ap;
 	delete agent;
 
-	//as.setAgentPool();
 
-	//as.run();
 	
 	return 0;
 }
