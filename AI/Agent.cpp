@@ -58,7 +58,7 @@ bool Agent::compile() {
 	Source* sources[3] = { input, code, output };
 	init_memory(memory_length);
 	fill_memory(sources, 3);
-	return true;
+	return (this->compiled = true);
 }
 
 std::thread Agent::run() {

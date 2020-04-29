@@ -17,6 +17,7 @@ ArtificialSelection::ArtificialSelection(Source* target, AgentPool* agentPool) {
 }
 
 ArtificialSelection::~ArtificialSelection() {
+	delete agentPool;
 }
 
 void ArtificialSelection::run() {
@@ -27,6 +28,11 @@ void ArtificialSelection::run() {
 
 	if (target == nullptr) {
 		Logger::error("ArtificialSelection", "Target output was not specified.");
+		exit(-1);
+	}
+
+	if (!agentPool->compile()) {
+		Logger::error("ArtificialSelection", "Could not compile agents from the Agent Pool.");
 		exit(-1);
 	}
 

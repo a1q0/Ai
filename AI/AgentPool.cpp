@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "AgentPool.h"
 
+#include "Logger.h"
+
 AgentPool::AgentPool(Agent* agentTemplate, unsigned int agents_len) : target(nullptr) {
 	this->agents = new Agent[agents_len];
 	this->agents_len = agents_len;
@@ -8,6 +10,8 @@ AgentPool::AgentPool(Agent* agentTemplate, unsigned int agents_len) : target(nul
 	for (unsigned int i = 0; i < agents_len; i++) {
 		this->agents[i] = *(agentTemplate->copy());
 	}
+
+	setTarget(agentTemplate->output);
 }
 
 AgentPool::~AgentPool() {
@@ -18,6 +22,7 @@ AgentPool::~AgentPool() {
 AgentPool* AgentPool::setRandomSources() {
 	for (unsigned int i = 0; i < this->agents_len; i++) {
 		if (agents[i].code == nullptr)
+			Logger::error("AgentPool", "nullptr");
 			exit(-1);
 		
 		agents[i].code->random();
@@ -26,6 +31,8 @@ AgentPool* AgentPool::setRandomSources() {
 }
 
 void AgentPool::run() {
+	Logger::info("AgentPool", "Running Agents ...");
+
 	for (unsigned int i = 0; i < this->agents_len; i++) {
 		agents[i].run();
 	}
@@ -37,6 +44,9 @@ bool AgentPool::compile() {
 			return false;
 	}
 
+	std::stringstream ss;
+	ss << agents_len << " Agents compiled." << std::endl;
+	Logger::info("AgentPool", ss.str());
 	return true;
 }
 

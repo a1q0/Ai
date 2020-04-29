@@ -38,14 +38,12 @@ int main(int argc, char *argv[]) {
 
 	AgentPool* ap = new AgentPool(targetAgent, 256);
 	as->setAgentPool(ap);
+	as->setTarget(targetAgent->output);
 	
 	as->run();
 
 	delete as;
-	delete ap;
 	delete targetAgent;
 
-
-	
 	return 0;
 }
