@@ -7,10 +7,16 @@
 #include "Logger.h"
 
 namespace Logger {
+	
+	
 	bool enable_info = true;
 	bool enable_debug = true;
 	bool enable_warning = true;
 	bool enable_error = true;
+
+	void print(std::string message) {
+		std::cout << message;
+	}
 
 	void info(std::string name, std::string message) {
 		if (!enable_info)
@@ -27,7 +33,7 @@ namespace Logger {
 		if (name != "")
 			std::cout << "[" << name << "] ";
 		std::cout << message << std::endl;
-
+		
 	}
 
 	void warning(std::string name, std::string message) {

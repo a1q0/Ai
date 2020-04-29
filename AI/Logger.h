@@ -9,6 +9,8 @@ namespace Logger {
 	extern bool enable_warning;
 	extern bool enable_error;
 	
+	void print(std::string message);
+
 	void info(std::string name, std::string message);
 	void debug(std::string name, std::string message);
 	void warning(std::string name, std::string message);

@@ -31,10 +31,19 @@ AgentPool* AgentPool::setRandomSources() {
 }
 
 void AgentPool::run() {
-	Logger::info("AgentPool", "Running Agents ...");
+	Logger::info("AgentPool", "Starting Agents ...");
+	std::thread* threads = new std::thread[this->agents_len];
+	
+	Logger::print("[");
+	for (unsigned int i = 0; i < this->agents_len; i++) {
+		threads[i] = agents[i].run();
+		Logger::print(".");
+	}
+
+	Logger::print("]\nDone.\n");
 
 	for (unsigned int i = 0; i < this->agents_len; i++) {
-		agents[i].run();
+		threads[i].join();
 	}
 }
 

@@ -28,9 +28,10 @@ Agent::~Agent() {
 }
 
 void Agent::start() {
-	if (compiled == false)
+	if (compiled == false) {
 		Logger::error("Agent", "You must compile the agent before running it.");
 		exit(-1);
+	}
 
 	emulator->run(memory, memory_length);
 
@@ -58,11 +59,12 @@ bool Agent::compile() {
 	Source* sources[3] = { input, code, output };
 	init_memory(memory_length);
 	fill_memory(sources, 3);
-	return (this->compiled = true);
+	this->compiled = true;
+	return true;
 }
 
 std::thread Agent::run() {
-	return std::thread(&Agent::start, this);
+	return std::thread([=] { start(); });
 }
 
 float Agent::fitness(Source &target) {
@@ -79,23 +81,30 @@ float Agent::fitness(Source &target) {
 	return fitness;
 }
 
+Agent* Agent::setEmulator(Emulator* emulator) {
+	if (this->emulator != nullptr)
+		delete this->emulator;
+	this->emulator = emulator;
+	return this;
+}
+
 Agent* Agent::setInput(Source* source) {
-	if (input != nullptr)
-		delete input;
+	if (this->input != nullptr)
+		delete this->input;
 	this->input = source;
 	return this;
 }
 
 Agent* Agent::setCode(Source* source) {
-	if (code != nullptr)
-		delete code;
+	if (this->code != nullptr)
+		delete this->code;
 	this->code = source;
 	return this;
 }
 
 Agent* Agent::setOutput(Source* source) {
-	if (output != nullptr)
-		delete output;
+	if (this->output != nullptr)
+		delete this->output;
 	this->output = source;
 	return this;
 }
@@ -106,5 +115,6 @@ Agent* Agent::copy() {
 	agent->memory_length = this->memory_length;
 	memcpy(agent->memory, this->memory, memory_length);
 	agent->compiled = this->compiled;
+	agent->emulator = this->emulator;
 	return agent;
 }

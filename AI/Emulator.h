@@ -4,6 +4,6 @@ public:
 	Emulator();
 	~Emulator();
 
-	virtual void run(unsigned int* memory, int length) = 0;
+	virtual void run(unsigned int* memory, unsigned int length) = 0;
 };
 

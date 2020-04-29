@@ -26,6 +26,8 @@ public:
 
 	float fitness(Source &target);
 
+	Agent* setEmulator(Emulator* emulator);
+	
 	Agent* setInput(Source* source);
 
 	Agent* setCode(Source* source);
@@ -37,7 +39,6 @@ public:
 private:
 	void start();
 	void init_memory(unsigned int length);
-
 	void fill_memory(Source** sources, unsigned int length);
 
 };

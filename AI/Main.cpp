@@ -3,6 +3,7 @@
 #include "Agent.h"
 #include "Source.h"
 #include "ArtificialSelection.h"
+#include "Subleq.h"
 
 int main(int argc, char *argv[]) {
 	/**
@@ -35,8 +36,9 @@ int main(int argc, char *argv[]) {
 	targetAgent->setInput(new Source(0));
 	targetAgent->setCode((new Source(256))->zero());
 	targetAgent->setOutput(target);
+	targetAgent->setEmulator(new Subleq());
 
-	AgentPool* ap = new AgentPool(targetAgent, 256);
+	AgentPool* ap = new AgentPool(targetAgent, 8);
 	as->setAgentPool(ap);
 	as->setTarget(targetAgent->output);
 	
