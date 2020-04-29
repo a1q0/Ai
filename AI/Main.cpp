@@ -25,24 +25,27 @@ int main(int argc, char *argv[]) {
 
 	*/
 	
-	Source* target = new Source(1);
-	target->data = new int[2] {1, 2};
 	ArtificialSelection as;
 
+	Source* target = new Source(1);
+	target->data = new int[2] {1, 2};
 	as.setTarget(target);
 	
-	Agent agent;
+	// Agent used as template for all others agents
+	Agent* agent = new Agent();
 
-	agent.setInput(new Source(0));
-	agent.setCode((new Source(256))->zero());
-	agent.setOutput((new Source(2))->zero());
+	agent->setInput(new Source(0));
+	agent->setCode((new Source(256))->zero());
+	agent->setOutput((new Source(2))->zero());
 
 	AgentPool* ap = new AgentPool(agent, 256);
+
+	delete ap;
+	delete agent;
 
 	//as.setAgentPool();
 
 	//as.run();
 	
-
 	return 0;
 }

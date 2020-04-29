@@ -3,26 +3,15 @@
 
 #include <iostream>
 
-AgentPool::AgentPool(Agent agentTemplate, unsigned int agents_len) : target(nullptr) {
+AgentPool::AgentPool(Agent* agentTemplate, unsigned int agents_len) : target(nullptr) {
 	this->agents = new Agent[agents_len];
 	this->agents_len = agents_len;
 
-	std::cout << "agent template : " << agentTemplate.code->length << std::endl;
+	std::cout << "agent template : " << agentTemplate->code->length << std::endl;
 
 	for (int i = 0; i < agents_len; i++) {
-		this->agents[i] = *(agentTemplate.copy());
+		this->agents[i] = *(agentTemplate->copy());
 	}
-}
-
-AgentPool::AgentPool(Agent* agents, unsigned int agents_len) : target(nullptr) {
-	this->agents = agents;
-	this->agents_len = agents_len;
-}
-
-AgentPool::AgentPool(Agent* agents, unsigned int agents_len, Source* target) {
-	this->agents = agents;
-	this->agents_len = agents_len;
-	this->target = target;
 }
 
 AgentPool::~AgentPool() {

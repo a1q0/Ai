@@ -11,7 +11,7 @@
 Source::Source(unsigned int length) {
 	this->length = length;
 	
-	std::cout << "length: " << length << std::endl;
+	std::cout << "constructor 1 length: " << length << std::endl;
 
 	if (length != 0)
 		this->data = new int[length];
@@ -20,7 +20,7 @@ Source::Source(unsigned int length) {
 }
 
 Source::Source(int* data, unsigned int length) {
-	std::cout << "length: " << length << std::endl;
+	std::cout << "constructor 2 length: " << length << std::endl;
 
 
 	this->data = new int[length];
@@ -29,9 +29,7 @@ Source::Source(int* data, unsigned int length) {
 }
 
 Source::~Source() {
-	if (!nullptr)
-		delete[] data;
-	data = nullptr;
+	delete[] data;
 }
 
 Source* Source::random() {

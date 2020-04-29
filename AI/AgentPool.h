@@ -9,9 +9,8 @@ public:
 
 	Source* target;
 	
-	AgentPool(Agent agentTemplate, unsigned int agents_len);
-	AgentPool(Agent* agents, unsigned int agents_len);
-	AgentPool(Agent* agents, unsigned int agents_len, Source* target);
+	AgentPool(Agent* agentTemplate, unsigned int agents_len);
+	
 	~AgentPool();
 
 	AgentPool* setRandomSources();
