@@ -33,6 +33,10 @@ void Agent::start() {
 		exit(-1);
 	}
 
+	if (emulator == nullptr) {
+		Logger::error("Agent", "You must provide an emulator");
+	}
+
 	emulator->run(memory, memory_length);
 
 	memcpy(output->data, &memory[input->length + code->length], output->length);
