@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 	targetAgent->setOutput(target);
 	targetAgent->setEmulator(new Subleq());
 
-	AgentPool* ap = new AgentPool(targetAgent, 8);
+	AgentPool* ap = new AgentPool(targetAgent, 1);
 	as->setAgentPool(ap);
 	as->setTarget(targetAgent->output);
 	
